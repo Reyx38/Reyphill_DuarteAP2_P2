@@ -42,9 +42,7 @@ class RepositoryViewModel @Inject constructor(
                         val Usuario = resource.data
                         _uiState.update {
                             it.copy(
-                                nombre = Usuario?.name ?: "",
-                                descripcion = Usuario?.description ?: "",
-                                htmlUrl = Usuario?.htmlUrl ?: ""
+                                repository = Usuario ?: emptyList()
                             )
                         }
                     }
