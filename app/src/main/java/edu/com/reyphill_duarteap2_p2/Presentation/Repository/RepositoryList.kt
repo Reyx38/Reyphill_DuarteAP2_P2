@@ -28,16 +28,11 @@ import edu.com.reyphill_duarteap2_p2.Data.Remote.Dto.RepositoryDto
 @Composable
 fun RepositoryListScreen(
     viewModel: RepositoryViewModel = hiltViewModel(),
-    createRepository: () -> Unit,
-    onEditRepository: (Int?) -> Unit,
+
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-
     RepositoryListBodyScreen(
         uiState,
-        createRepository,
-        onEditRepository,
-
     )
 }
 
@@ -45,8 +40,7 @@ fun RepositoryListScreen(
 @Composable
 fun RepositoryListBodyScreen(
     uiState: RepositoryUiState,
-    createRepository: () -> Unit,
-    onEditRepository: (Int?) -> Unit,
+
 ) {
     var showDialog by remember { mutableStateOf(false) }
     var repositoryDelete by remember { mutableStateOf<Int?>(null) }
@@ -63,9 +57,7 @@ fun RepositoryListBodyScreen(
             )
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = createRepository) {
-                Icon(Icons.Filled.Add, contentDescription = "Agregar Nuevo Repositorio")
-            }
+
         },
     ) { padding ->
         Column(
@@ -160,11 +152,8 @@ fun RepositoryListBodyScreen(
                             items(uiState.repository) { repository ->
                                 RepositoryRow(
                                     repository,
-                                    onEditRepository,
-                                    onDelete = {
-                                        repositoryDelete = it
-                                        showDialog = true
-                                    }
+
+
                                 )
                                 Spacer(modifier = Modifier.height(8.dp))
                             }
@@ -182,8 +171,7 @@ fun RepositoryListBodyScreen(
 @Composable
 private fun RepositoryRow(
     repository: RepositoryDto,
-    onEdit: (Int?) -> Unit,
-    onDelete: (Int) -> Unit
+
 ) {
     val uriHandler = LocalUriHandler.current
 
@@ -325,8 +313,6 @@ fun PreviewRepositoryList() {
 
     RepositoryListBodyScreen(
         uiState = mockUiState,
-        createRepository = { /* Mock function */ },
-        onEditRepository = { /* Mock function */ },
 
     )
 }
@@ -341,8 +327,7 @@ fun PreviewRepositoryListLoading() {
 
     RepositoryListBodyScreen(
         uiState = mockUiState,
-        createRepository = { /* Mock function */ },
-        onEditRepository = { /* Mock function */ },
+
 
     )
 }
@@ -358,8 +343,7 @@ fun PreviewRepositoryListWithError() {
 
     RepositoryListBodyScreen(
         uiState = mockUiState,
-        createRepository = { /* Mock function */ },
-        onEditRepository = { /* Mock function */ },
+
     )
 }
 
@@ -373,8 +357,7 @@ fun PreviewRepositoryListEmpty() {
 
     RepositoryListBodyScreen(
         uiState = mockUiState,
-        createRepository = { /* Mock function */ },
-        onEditRepository = { /* Mock function */ },
+
 
     )
 }

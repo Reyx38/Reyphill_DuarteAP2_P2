@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "edu.ucne.jeronycruz_ap2_p2"
+    namespace = "edu.com.reyphill_duarteap2_p2"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "edu.ucne.jeronycruz_ap2_p2"
+        applicationId = "edu.com.reyphill_duarteap2_p2"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

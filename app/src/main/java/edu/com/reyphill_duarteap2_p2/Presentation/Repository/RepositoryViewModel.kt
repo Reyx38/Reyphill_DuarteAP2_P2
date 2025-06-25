@@ -42,7 +42,8 @@ class RepositoryViewModel @Inject constructor(
                         val Usuario = resource.data
                         _uiState.update {
                             it.copy(
-                                repository = Usuario ?: emptyList()
+                                repository = Usuario ?: emptyList(),
+                                isLoading = false,
                             )
                         }
                     }

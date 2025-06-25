@@ -6,6 +6,6 @@ class RemoteDataSource @Inject constructor(
     private val suplidorApi: GitHubApi
 ) {
 
-     fun getSuplidores(Username: String) = suplidorApi.listRepos(Username)
+     suspend fun getSuplidores(Username: String) = suplidorApi.listRepos(Username)
 
 }
